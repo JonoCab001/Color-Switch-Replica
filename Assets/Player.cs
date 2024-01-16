@@ -12,9 +12,7 @@ public class Player : MonoBehaviour
     public Color colour_Cyan;
     public Color colour_Magentha;
     public Color colour_Pink;
-    public Color colour_Yellow;
-    //public Color[] colors;
-    //public string[] colours = { "Cyan", "Magentha", "Pink", "Yellow" }; 
+    public Color colour_Yellow; 
 
     void Start()
     {
@@ -34,7 +32,7 @@ public class Player : MonoBehaviour
     // This identifies on what colour has been touched on the colour wheel by the player
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //Debug.Log(collider.tag);
+        // To change the colour of the player
         if (collider.tag == "ColourChanger")
         {
             SetRandomColour();
@@ -42,6 +40,7 @@ public class Player : MonoBehaviour
             return;
         }
         
+        // Game Over if the player hits the wrong colour while on the current one (for e.g., if the player is yellow but hits magenta, then game over. 
         if (collider.tag != currentColour)
         {
             Debug.Log("Game Over");
@@ -53,10 +52,6 @@ public class Player : MonoBehaviour
     void SetRandomColour()
     {
         int index = Random.Range(0, 4);
-
-        // These are heavy syntaxes
-        //if (index == 0) // This will do one thing
-        //else if (index == 1) // This will do one thing
 
         switch (index) 
         {
@@ -78,6 +73,6 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        Debug.Log("Current colour of the player is: " +currentColour);
+        //Debug.Log("Current colour of the player is: " +currentColour);
     }
 }
